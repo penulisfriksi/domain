@@ -1,89 +1,64 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wiki Guide</title>
-<style>
-/* Reset */
-body, h1, ul, li {
-  margin: 0;
-  padding: 0;
-}
-body {
-  font-family: "Inter", Arial, sans-serif;
-  background: #fafafa;
-  color: #1a1a1a;
-  padding: 2rem;
-}
-h1 {
-  text-align: center;
-  font-weight: 600;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: #111;
-}
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Control</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
 
-/* Grid */
-#file-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  list-style: none;
-}
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
 
-/* Card flat style */
-li {
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  padding: 1rem;
-  transition: background 0.2s, border-color 0.2s;
-}
-li:hover {
-  background: #f0f0f0;
-  border-color: #d0d0d0;
-}
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-/* Link style */
-a {
-  text-decoration: none;
-  color: #0d6efd;
-  font-weight: 500;
-  display: block;
-  word-break: break-word;
-}
-a:hover {
-  color: #0a58ca;
-}
-</style>
+      /* Off-white base, very slightly warm like aged newsprint */
+      background-color: #f7f4ef;
+
+      /* Extremely subtle halftone / grain — newsprint feel */
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    .center {
+      text-align: center;
+      max-width: 560px;
+      padding: 2rem;
+      animation: up 1.4s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes up {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    p {
+      font-family: 'Libre Baskerville', 'Times New Roman', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.85;
+      color: #1a1814;
+      letter-spacing: 0.01em;
+    }
+  </style>
 </head>
 <body>
-<h1>Wiki Guide</h1>
-<ul id="file-list"></ul>
-
-<script>
-const username = "xmlze";
-const repo = "guide";
-
-fetch(`https://api.github.com/repos/${username}/${repo}/contents/`)
-  .then(res => res.json())
-  .then(files => {
-    const ul = document.getElementById('file-list');
-    files.forEach(file => {
-      if(file.name.endsWith('.html') && file.name !== 'index.html'){
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        a.href = file.name;
-        a.textContent = file.name.replace('.html','');
-        li.appendChild(a);
-        ul.appendChild(li);
-      }
-    });
-  })
-  .catch(err => console.log(err));
-</script>
+  <div class="center">
+    <p>
+      Control food and you control people,<br>
+      control oil and you control nations,<br>
+      control money and you control the world.
+    </p>
+  </div>
 </body>
 </html>
